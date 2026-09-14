@@ -93,8 +93,15 @@ def make_shuffled_indices(n_samples, seed):
     shuffled_idx = rng.permutation(n_samples)
     return shuffled_idx
 
-# Step 11 - partition_indices (not yet solved)
-# TODO: implement
+# Step 11 - partition_indices
+def partition_indices(indices, train_ratio, val_ratio):
+    # TODO: Split a shuffled index array into train, validation, and test index arrays.
+    n_sample = len(indices)
+
+    train_end = int(train_ratio * n_sample)
+    val_end = int(val_ratio * n_sample) + train_end
+
+    return indices[:train_end], indices[train_end: val_end], indices[val_end:]
 
 # Step 12 - subset_xy (not yet solved)
 # TODO: implement
