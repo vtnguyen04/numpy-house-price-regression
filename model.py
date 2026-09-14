@@ -18,13 +18,10 @@ def impute_nan_with_mean(X):
     """
     X_clean = np.array(X, dtype=float, copy=True)
 
-    with np.errstate(all="ignore"):
-        means = np.nanmean(X_clean, axis=0)
-
+    means = np.nanmean(X_clean, axis=0)
     means = np.nan_to_num(means, nan=0.0)
 
-    nan_mask = np.isnan(X_clean)
-    return np.where(nan_mask, means, X_clean)
+    return np.where(np.isnan(X_clean), means, X_clean)
 
 # Step 2 - compute_iqr_bounds (not yet solved)
 # TODO: implement
